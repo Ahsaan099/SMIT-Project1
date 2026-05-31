@@ -316,12 +316,11 @@
             position: relative;
         }
 
-        .circle-placeholder {
+        .center-circle img {
             width: 320px;
-            height: 320px;
-            background-color: var(--primary-green);
-            border-radius: 50%;
-            box-shadow: 0 20px 40px rgba(46, 209, 113, 0.3);
+            height: auto;
+            max-width: 100%;
+            object-fit: contain;
         }
 
         .dots-indicator {
@@ -460,8 +459,8 @@
             .hero-image img { right: 0; max-width: 100%; }
             .cta-strip { margin: 0 20px 80px; }
             .steps-grid { gap: 20px; }
-            .circle-placeholder { width: 250px; height: 250px; }
             .center-circle { flex: 0 0 250px; }
+            .center-circle img { width: 250px; }
         }
 
         @media (max-width: 850px) {
@@ -548,7 +547,7 @@
             </div>
         </div>
         <div class="hero-image">
-            <img src="https://placehold.co/600x450/transparent/2ED171?text=Car+&+Map+Illustration" alt="Ride Sharing Illustration">
+            <img src="https://www.figma.com/design/jXS8tYJ5sRMC6u2xQ9CdNI/Ride-sharing-web-ui---bootstrap-guide-lines--Community-?node-id=41-72650&t=Hadg3NGJaVLLmFts-4" alt="Ride Sharing Illustration">
         </div>
     </section>
 
@@ -585,7 +584,7 @@
             </div>
 
             <div class="center-circle">
-                <div class="circle-placeholder"></div>
+                <img src="https://www.figma.com/design/jXS8tYJ5sRMC6u2xQ9CdNI/Ride-sharing-web-ui---bootstrap-guide-lines--Community-?node-id=41-72278&t=Hadg3NGJaVLLmFts-4" alt="Mobile View Mockup">
             </div>
 
             <div class="steps-column right-steps">
@@ -680,5 +679,3 @@
 
 </body>
 </html>
-
-```
