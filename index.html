@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tere - Ride Sharing App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #2ED171; 
+            --text-dark: #222222;
+            --text-light: #777777;
+            --bg-light: #FAFAFA;
+            --white: #FFFFFF;
+            --font-main: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-green);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #25b861;
+        }
+
+        .btn-dark {
+            background-color: #000;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-dark:hover {
+            background-color: #222;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        h2 span {
+            color: var(--primary-green);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .navbar {
+            padding: 25px 0;
+            background: var(--white);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            letter-spacing: -1px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-dark);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 20px 100px;
+            min-height: 80vh;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 550px;
+        }
+
+        .hero-content p {
+            color: var(--text-light);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .hero-image {
+            flex: 1.2;
+            display: flex;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .hero-image img {
+            max-width: 120%;
+            height: auto;
+            position: relative;
+            right: -50px;
+        }
+
+        .cta-strip {
+            background-color: var(--primary-green);
+            padding: 35px 0;
+            border-radius: 10px;
+            max-width: 1100px;
+            margin: -50px auto 80px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .cta-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .cta-text {
+            color: var(--white);
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .cta-form {
+            display: flex;
+            gap: 0;
+            background: var(--white);
+            border-radius: 5px;
+            overflow: hidden;
+            padding: 6px;
+            width: 45%;
+        }
+
+        .cta-form input {
+            flex: 1;
+            border: none;
+            padding: 12px 20px;
+            outline: none;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .btn-dark-submit {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn-dark-submit:hover {
+            background-color: #333;
+        }
+
+        .how-it-works {
+            padding: 60px 20px 100px;
+        }
+
+        .steps-grid {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            margin-top: 70px;
+        }
+
+        .steps-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+
+        .step-card {
+            position: relative;
+        }
+
+        .step-card h3 {
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .step-card p {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .align-right {
+            text-align: right;
+        }
+
+        .align-left {
+            text-align: left;
+        }
+
+        .step-icon {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--primary-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .align-right .step-icon {
+            margin-left: auto;
+        }
+
+        .center-circle {
+            flex: 0 0 350px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .circle-placeholder {
+            width: 320px;
+            height: 320px;
+            background-color: var(--primary-green);
+            border-radius: 50%;
+            box-shadow: 0 20px 40px rgba(46, 209, 113, 0.3);
+        }
+
+        .dots-indicator {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            letter-spacing: 5px;
+        }
+
+        .benefits {
+            padding: 80px 20px;
+        }
+
+        .benefit-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--white);
+            padding: 50px 60px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.04);
+            margin-bottom: 40px;
+            gap: 50px;
+        }
+
+        .benefit-card.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .benefit-content {
+            flex: 1;
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+        }
+
+        .benefit-number {
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            line-height: 0.8;
+            margin-top: 5px;
+        }
+
+        .benefit-content h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .benefit-content p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .benefit-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .benefit-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        footer {
+            padding: 80px 0 30px;
+            border-top: 1px solid #f0f0f0;
+            background-color: var(--white);
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            letter-spacing: -1px;
+        }
+        
+        .footer-logo .logo-icon {
+            color: var(--primary-green);
+        }
+
+        .footer-contact {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-contact h4 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .footer-contact p {
+            color: var(--text-light);
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .footer-downloads {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: flex-start;
+            min-width: 150px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: var(--primary-green);
+            font-size: 0.9rem;
+            padding-top: 30px;
+            border-top: 1px solid #f0f0f0;
+            font-weight: 600;
+        }
+
+        @media (max-width: 1024px) {
+            h1 { font-size: 2.8rem; }
+            .hero-image img { right: 0; max-width: 100%; }
+            .cta-strip { margin: 0 20px 80px; }
+            .steps-grid { gap: 20px; }
+            .circle-placeholder { width: 250px; height: 250px; }
+            .center-circle { flex: 0 0 250px; }
+        }
+
+        @media (max-width: 850px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 40px;
+            }
+            .hero-content {
+                margin-bottom: 50px;
+                max-width: 100%;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .cta-container {
+                flex-direction: column;
+                gap: 25px;
+                text-align: center;
+            }
+            .cta-form {
+                width: 100%;
+                max-width: 500px;
+            }
+            .steps-grid {
+                flex-direction: column;
+            }
+            .align-right, .align-left {
+                text-align: center;
+            }
+            .align-right .step-icon, .align-left .step-icon {
+                margin: 0 auto 20px auto;
+            }
+            .center-circle {
+                order: -1;
+                margin-bottom: 40px;
+            }
+            .benefit-card, .benefit-card.reverse {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 30px;
+            }
+            .benefit-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 20px;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <span class="logo-icon">🌿</span> tere
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">How tere works</a></li>
+                    <li><a href="#">Tere benefits</a></li>
+                </ul>
+                <a href="#" class="btn btn-primary">Help Center</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero container">
+        <div class="hero-content">
+            <h1>DOWNLOAD APP,<br>SAVE MONEY, MAKE<br>FRIENDS!</h1>
+            <p>Its simple and its free. Play your part in reducing Carbon Footprint and help Mother Nature to sustain its beauty. So what are you waiting for?<br>Lets ride together!</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-dark">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Download on Play Store" width="140">
+                </a>
+                <a href="#" class="btn btn-dark">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on App Store" width="140">
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://placehold.co/600x450/transparent/2ED171?text=Car+&+Map+Illustration" alt="Ride Sharing Illustration">
+        </div>
+    </section>
+
+    <section class="cta-strip">
+        <div class="cta-container">
+            <div class="cta-text">
+                Let's go. Get a link<br>to download the app.
+            </div>
+            <form class="cta-form">
+                <input type="text" placeholder="Enter mobile phone number">
+                <button type="button" class="btn-dark-submit">APPLY TO DRIVE</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="how-it-works container">
+        <div class="section-header">
+            <h2>HOW <span>TERE</span> WORKS</h2>
+            <p>Download and install the tere app. Enter your phone<br>number and make your user account. when approved you<br>may start driving.</p>
+        </div>
+
+        <div class="steps-grid">
+            <div class="steps-column left-steps">
+                <div class="step-card align-right">
+                    <div class="step-icon">1</div>
+                    <h3>REQUEST A RIDE</h3>
+                    <p>Have to reach office or going<br>for shopping?<br>Just put your current location<br>and destination and search a<br>ride that suits you</p>
+                </div>
+                <div class="step-card align-right">
+                    <div class="step-icon">3</div>
+                    <h3>INSTANT NOTIFICATIONS</h3>
+                    <p>Get instant notifications of<br>your rides and be in contact<br>with fellow riders all the time</p>
+                </div>
+            </div>
+
+            <div class="center-circle">
+                <div class="circle-placeholder"></div>
+            </div>
+
+            <div class="steps-column right-steps">
+                <div class="step-card align-left">
+                    <div class="step-icon">2</div>
+                    <h3>POST A RIDE</h3>
+                    <p>Going somewhere but hate to<br>travel alone -<br>just post your ride details and<br>publish it</p>
+                </div>
+                <div class="step-card align-left">
+                    <div class="step-icon">4</div>
+                    <h3>CASHLESS PAYMENT</h3>
+                    <p>Payment made easy by using<br>your own Wallet - no more<br>cash to carry</p>
+                </div>
+            </div>
+        </div>
+        <div class="dots-indicator">
+            • • <span style="color:#d3d3d3">•</span> <span style="color:#d3d3d3">•</span>
+        </div>
+    </section>
+
+    <section class="benefits container">
+        <div class="section-header">
+            <h2><span>TERE</span> BENEFITS</h2>
+        </div>
+
+        <div class="benefit-card">
+            <div class="benefit-content">
+                <div class="benefit-number">01.</div>
+                <div>
+                    <h3>Flexible<br>working hours</h3>
+                    <p>You can decide when, and how much<br>time you want to drive.</p>
+                </div>
+            </div>
+            <div class="benefit-image">
+                <img src="https://placehold.co/350x250/transparent/2ED171?text=Clock+Illustration" alt="Flexible Hours">
+            </div>
+        </div>
+
+        <div class="benefit-card reverse">
+            <div class="benefit-content">
+                <div class="benefit-number">02.</div>
+                <div>
+                    <h3>Earnings</h3>
+                    <p>By driving with tere you can<br>earn more.</p>
+                </div>
+            </div>
+            <div class="benefit-image">
+                <img src="https://placehold.co/350x250/transparent/2ED171?text=Money+Illustration" alt="Earnings">
+            </div>
+        </div>
+
+        <div class="benefit-card">
+            <div class="benefit-content">
+                <div class="benefit-number">03.</div>
+                <div>
+                    <h3>Customer<br>support 24/7</h3>
+                    <p>Tere is a local service provider and we are proud to<br>support you in your local language. We are proud<br>to be at your service 24/7!</p>
+                </div>
+            </div>
+            <div class="benefit-image">
+                <img src="https://placehold.co/350x250/transparent/2ED171?text=Support+Illustration" alt="Customer Support">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-logo">
+                <span class="logo-icon">🌿</span> tere
+            </div>
+            <div class="footer-contact">
+                <h4>Be Our Friend</h4>
+                <p>3, Season Park, Jakarta</p>
+                <p>support@foodyar.co.id</p>
+                <p>021 - 1111 - 2222</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Be Our Partner</h4>
+                <p>3, Season Park, Jakarta</p>
+                <p>support@foodyar.co.id</p>
+                <p>021 - 1111 - 2222</p>
+            </div>
+            <div class="footer-downloads">
+                <a href="#" class="btn btn-dark"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store" width="120"></a>
+                <a href="#" class="btn btn-dark"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" width="120"></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>All Rights Reserved tere by CodingLab 2022</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+```
